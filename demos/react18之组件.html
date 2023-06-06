@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- React 18 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      let message = "Hello world";
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      function btnClick() {
+        message = "hello react";
+        render();
+      }
+      // React.Component
+      class App extends React.Component {
+        // 组件里有方法
+        // 组件数据
+        // 组件渲染内容
+        setMsg() {
+          console.log("hello world");
+        }
+        constructor() {
+          super();
+          this.state = {
+            message: "Bye Bye",
+          };
+          // this.add=this.add.bind(this)
+        }
+        add(){
+          console.log('add',this)
+          // setState内部做了两件事：1.state中值修改 2.自动重新执行render
+          this.setState({
+            message:'abc'
+          })
+        }
+        render() {
+          console.log('render',this)
+          return <h1>Hello App{this.state.message}
+              <button onClick={this.add.bind(this)}>点击</button>
+            </h1>;
+        }
+      }
+      function bar() {
+        console.log("bar", this);
+      }
+      bar();
+      function render() {
+        root.render(
+          <div>
+            <h1>{message}</h1>
+            <button onClick={btnClick}>点击</button>
+            <App />
+          </div>
+        );
+      }
+      render();
+    </script>
+  </body>
+</html>
