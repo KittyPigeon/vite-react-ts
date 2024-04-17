@@ -30,6 +30,13 @@ const routes: Array<routeType> = [
       title: "测试",
     },
   },
+  {
+    path: "/about",
+    component: () => import("@/pages/about"),
+    meta: {
+      title: "测试",
+    },
+  },
 ];
 
 export default routes;

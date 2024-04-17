@@ -31,21 +31,30 @@
           super();
           this.state = {
             message: "Bye Bye",
+            list: [1, 2, 3, 4],
           };
           // this.add=this.add.bind(this)
         }
-        add(){
-          console.log('add',this)
+        add() {
+          console.log("add", this);
           // setState内部做了两件事：1.state中值修改 2.自动重新执行render
           this.setState({
-            message:'abc'
-          })
+            message: "abc",
+          });
         }
         render() {
-          console.log('render',this)
-          return <h1>Hello App{this.state.message}
+          console.log("render", this);
+          return (
+            <h1>
+              Hello App{this.state.message}
               <button onClick={this.add.bind(this)}>点击</button>
-            </h1>;
+              <ul>
+                {this.state.list.map((item) => (
+                  <li key={"item_" + item}>{item}</li>
+                ))}
+              </ul>
+            </h1>
+          );
         }
       }
       function bar() {

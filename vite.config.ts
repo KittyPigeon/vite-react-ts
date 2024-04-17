@@ -6,13 +6,20 @@ import fs from "fs";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { visualizer } from "rollup-plugin-visualizer";
 import autoprefixer from "autoprefixer";
-import postcssImport from "postcss-import"
+import tailwindcss from "tailwindcss";
+import postcss7Compat from '@tailwindcss/postcss7-compat';
+import postcss from 'rollup-plugin-postcss';
 
+// import WindiCSS from 'vite-plugin-windicss'
+
+// import  from 'tailwindcss'
+// const tailwindcss = require("tailwindcss");
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "./",
   plugins: [
     react(),
+    // WindiCSS(),
     copy({
       targets: [
         {
@@ -29,6 +36,9 @@ export default defineConfig({
         },
       },
     }),
+    // postcss({
+    //   plugins: [tailwindcss,autoprefixer()],
+    // }),
     visualizer({
       filename: "test.html", //生成分析网页文件名
       open: true,
@@ -51,19 +61,13 @@ export default defineConfig({
     },
   },
   css: {
-    postcss: {
-      plugins: [
-        autoprefixer,
-        postcssImport
-      ],
-    },
   },
   build: {
-    minify:"terser",
+    minify: "terser",
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger:true
+        drop_debugger: true,
       },
     },
     outDir: "1.0.0",
