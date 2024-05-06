@@ -76,10 +76,10 @@ export default defineConfig({
   server: {
     host: true,
     open: true,
-    port: 443,
-    https: {
-      key: fs.readFileSync("cert/localhost+1-key.pem"), // 读取我们上面生成的公钥
-      cert: fs.readFileSync("cert/localhost+1.pem"), // 读取我们上面生成的证书
-    },
+    // port: 443,
+    // https: {
+    //   key: fs.readFileSync("cert/localhost+1-key.pem"), // 读取我们上面生成的公钥
+    //   cert: fs.readFileSync("cert/localhost+1.pem"), // 读取我们上面生成的证书
+    // },
   },
 });

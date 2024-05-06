@@ -75,6 +75,9 @@ function Home() {
         }}></Tab>
       <div className="content">{_tabs[ActiveIndex].element()}</div>
       <DatePicker></DatePicker>
+
+
+      
     </div>
   );
 }
